@@ -25,7 +25,12 @@ define(
       t_entry: _.template(t_entry),
       model: new M.Entries(),
 
-      fetch: function(cbs) { return this.model.fetch(cbs); },
+      fetch: function(cbs) {
+        _.crunch({
+          pre: this.model.fetch(cbs),
+          post: _.map(this.model, function(entry) { return entry.fetchSrc; })
+        });
+      },
 
       render: function() {
         var v = this;
