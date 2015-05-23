@@ -1,0 +1,10 @@
+body {
+    font: helvetica arial verdana sans-serif;
+    font-size: 12px;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 15px;
+    margin: auto;
+}
