@@ -1,5 +1,4 @@
 <div>
-  <h1><%- model.get('title') %></h1>
-  <small><%- moment(model.get('created')).format('L LT') %></small>
+  <h1><%- model.get('title') %> <small><%- moment(model.get('created')).format('L LT') %></small></h1>
   <%= model.get('content') %>
 </div>
