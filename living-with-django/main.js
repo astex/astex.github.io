@@ -12,7 +12,9 @@ require.config({
 
     backbone: 'lib/backbone',
 
-    marked: 'lib/marked'
+    marked: 'lib/marked',
+
+    moment: 'lib/moment'
   }
 });
 
