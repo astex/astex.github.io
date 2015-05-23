@@ -3,9 +3,10 @@ define(
     'jquery', 'underscore', 'backbone',
     'models',
     'text!templates/main.utpl',
+    'text!templates/entry.utpl',
 
     'underscore.crunch'
-  ], function($, _, B, M, t_main) {
+  ], function($, _, B, M, t_main, t_entry) {
     var V = {};
 
     V.Base = Backbone.View.extend({
@@ -16,13 +17,22 @@ define(
         });
       },
       fetch: function(cbs) { _.finish(cbs); },
-      render: function() { this.$el.html(this.template({model: this.model})); return this; }
+      render: function() { this.$el.html(this.t({model: this.model})); return this; }
     });
 
     V.Main = V.Base.extend({
-      template: _.template(t_main),
+      t: _.template(t_main),
+      t_entry: _.template(t_entry),
       model: new M.Entries(),
-      fetch: function(cbs) { return this.model.fetch(cbs); }
+
+      fetch: function(cbs) { return this.model.fetch(cbs); },
+
+      render: function() {
+        var v = this;
+        V.Base.prototype.render.call(v);
+        v.model.each(function(entry) { v.$('.container').append(v.t_entry({model: entry})); });
+        return v;
+      }
     });
 
     return V;
