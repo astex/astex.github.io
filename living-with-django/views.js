@@ -1,13 +1,21 @@
 define(
   [
-    'underscore', 'backbone',
+    'jquery', 'underscore', 'backbone',
     'models',
-    'text!templates/main.utpl'
-  ], function(_, B, M, t_main) {
+    'text!templates/main.utpl',
+
+    'underscore.crunch'
+  ], function($, _, B, M, t_main) {
     var V = {};
 
     V.Base = Backbone.View.extend({
-      initialize: function() { this.render(); },
+      initialize: function() {
+        var v = this;
+        v.fetch({
+          success: function() { v.render(); }
+        });
+      },
+      fetch: function(cbs) { _.finish(cbs); },
       render: function() { this.$el.html(this.template({model: this.model})); }
     });
 
