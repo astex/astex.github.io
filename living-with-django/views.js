@@ -1,12 +1,12 @@
 define(
   [
-    'jquery', 'underscore', 'backbone',
+    'jquery', 'underscore', 'backbone', 'moment',
     'models',
     'text!templates/main.utpl',
     'text!templates/entry.utpl',
 
     'underscore.crunch'
-  ], function($, _, B, M, t_main, t_entry) {
+  ], function($, _, B, moment, M, t_main, t_entry) {
     var V = {};
 
     V.Base = Backbone.View.extend({
@@ -41,7 +41,9 @@ define(
       render: function() {
         var v = this;
         V.Base.prototype.render.call(v);
-        v.model.each(function(entry) { v.$('.container').append(v.t_entry({model: entry})); });
+        v.model.each(function(entry) {
+          v.$('.container').append(v.t_entry({model: entry, moment: moment}));
+        });
         return v;
       }
     });
