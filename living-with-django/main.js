@@ -1,5 +1,11 @@
 window.blog = {DEUBUG: true};
 
-require.config({});
+require.config({
+  paths: {
+    jquery: 'lib/jquery',
+    underscore: 'lib/underscore',
+    backbone: 'lib/backbone'
+  }
+});
 
 require([], function() {});
