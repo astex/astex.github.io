@@ -3,8 +3,9 @@ define(['backbone', 'marked'], function(B, marked) {
 
   M.Entry = B.Model.extend({
     fetchSrc: function(cbs) {
-      require(['text!' + this.get('src')], function(src) {
-        this.set('content', marked(src));
+      var m = this;
+      return require(['text!' + m.get('src')], function(src) {
+        m.set('content', marked(src));
         _.finish(cbs);
       });
     }
