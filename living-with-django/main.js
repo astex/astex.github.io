@@ -8,4 +8,4 @@ require.config({
   }
 });
 
-require([], function() {});
+require(['views'], function(V) {});
