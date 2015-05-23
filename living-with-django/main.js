@@ -10,7 +10,9 @@ require.config({
     underscore: 'lib/underscore',
     "underscore.crunch": "lib/underscore.crunch",
 
-    backbone: 'lib/backbone'
+    backbone: 'lib/backbone',
+
+    marked: 'lib/marked'
   }
 });
 
