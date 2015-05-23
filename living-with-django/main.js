@@ -10,4 +10,6 @@ require.config({
   }
 });
 
-require(['views'], function(V) {});
+require(['views'], function(V) {
+  new V.Main({el: $('body')});
+});
