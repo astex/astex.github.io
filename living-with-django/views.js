@@ -26,10 +26,16 @@ define(
       model: new M.Entries(),
 
       fetch: function(cbs) {
+        var v = this;
+
         _.crunch({
-          pre: this.model.fetch(cbs),
-          post: _.map(this.model, function(entry) { return entry.fetchSrc; })
-        });
+          pre: $.proxy(v.model.fetch, v.model),
+          post: function(cbs1) {
+            _.crunch(v.model.map(function(entry) {
+              return $.proxy(entry.fetchSrc, entry);
+            }))(cbs1);
+          }
+        })(cbs);
       },
 
       render: function() {
