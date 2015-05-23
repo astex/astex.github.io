@@ -10,6 +10,6 @@ require.config({
   }
 });
 
-require(['views', 'css!css/main.css'], function(V) {
+require(['views', 'css!style/main.css'], function(V) {
   new V.Main({el: $('body')});
 });
