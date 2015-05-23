@@ -16,10 +16,14 @@ define(
         });
       },
       fetch: function(cbs) { _.finish(cbs); },
-      render: function() { this.$el.html(this.template({model: this.model})); }
+      render: function() { this.$el.html(this.template({model: this.model})); return this; }
     });
 
-    V.Main = V.Base.extend({template: _.template(t_main)});
+    V.Main = V.Base.extend({
+      template: _.template(t_main),
+      model: new M.Entries(),
+      fetch: function(cbs) { return this.model.fetch(cbs); }
+    });
 
     return V;
   }
