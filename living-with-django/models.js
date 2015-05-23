@@ -1,8 +1,11 @@
 define(['backbone'], function(B) {
   var M = {};
 
-  M.Entry = B.Models.extend({});
-  M.Entries = B.Models.extend({url: 'entries/data.json'});
+  M.Entry = B.Model.extend({});
+  M.Entries = B.Collection.extend({
+    model: M.Entry,
+    url: 'entries/data.json'
+  });
 
   return M;
 });
