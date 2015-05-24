@@ -1,14 +1,14 @@
 [
     {
-        "created": "2015-05-21T13:24:00-04:00",
-        "src": "entries/2015-05-21-hello-world.md",
-        "title": "Hello World",
-        "parser": "marked"
-    },
-    {
         "created": "2015-05-21T14:21:00-04:00",
         "src": "entries/2015-05-21-thread-local-requests.md",
         "title": "Thread Local Requests",
         "parser": "marked.highlight"
+    },
+    {
+        "created": "2015-05-21T13:24:00-04:00",
+        "src": "entries/2015-05-21-hello-world.md",
+        "title": "Hello World",
+        "parser": "marked"
     }
 ]
