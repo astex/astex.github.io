@@ -22,3 +22,7 @@ pre {
     padding-left: 20px;
     border-left: solid #888 2px;
 }
+
+.entry {
+    margin-bottom: 80px;
+}
