@@ -17,3 +17,8 @@ small {
     font-weight: normal;
     color: #666;
 }
+
+pre {
+    padding-left: 20px;
+    border-left: solid #888 2px;
+}
