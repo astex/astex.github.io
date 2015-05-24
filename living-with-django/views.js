@@ -11,6 +11,7 @@ define(
     var V = {};
 
     V.Base = Backbone.View.extend({
+      el: $('body'),
       t_main: _.template(t_main),
 
       initialize: function() {
