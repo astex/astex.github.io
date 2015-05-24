@@ -38,3 +38,12 @@ h1.big {
     margin-bottom: 80px;
     font-size: 3em;
 }
+
+h1 a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+h1 a:hover:after {
+    content: ' \2190'
+}
