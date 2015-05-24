@@ -3,25 +3,36 @@ define(
     'jquery', 'underscore', 'backbone', 'moment',
     'models',
     'text!templates/main.utpl',
+    'text!templates/list.utpl',
     'text!templates/entry.utpl',
 
     'underscore.crunch'
-  ], function($, _, B, moment, M, t_main, t_entry) {
+  ], function($, _, B, moment, M, t_main, t_list, t_entry) {
     var V = {};
 
     V.Base = Backbone.View.extend({
+      t_main: _.template(t_main),
+
       initialize: function() {
         var v = this;
         v.fetch({
           success: function() { v.render(); }
         });
       },
+
       fetch: function(cbs) { _.finish(cbs); },
-      render: function() { this.$el.html(this.t({model: this.model})); return this; }
+
+      render: function() {
+        this.$el.html(this.t_main());
+        this.$('.container').append(this.t(this.getTemplateArgs()));
+        return this;
+      },
+
+      getTemplateArgs: function() { return {model: this.model}; }
     });
 
     V.List = V.Base.extend({
-      t: _.template(t_main),
+      t: _.template(t_list),
       t_entry: _.template(t_entry),
       model: new M.Entries(),
 
@@ -38,13 +49,8 @@ define(
         })(cbs);
       },
 
-      render: function() {
-        var v = this;
-        V.Base.prototype.render.call(v);
-        v.model.each(function(entry) {
-          v.$('.container').append(v.t_entry({model: entry, moment: moment}));
-        });
-        return v;
+      getTemplateArgs: function() {
+        return {model: this.model, t_entry: this.t_entry, moment: moment};
       }
     });
 
