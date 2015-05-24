@@ -32,3 +32,9 @@ p code {
 .entry {
     margin-bottom: 80px;
 }
+
+h1.big {
+    color: #888;
+    margin-bottom: 80px;
+    font-size: 3em;
+}
