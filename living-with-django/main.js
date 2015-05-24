@@ -29,5 +29,5 @@ require.config({
 });
 
 require(['views', 'css!style/main.css'], function(V) {
-  new V.Main({el: $('body')});
+  new V.List({el: $('body')});
 });

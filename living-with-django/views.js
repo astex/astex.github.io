@@ -20,7 +20,7 @@ define(
       render: function() { this.$el.html(this.t({model: this.model})); return this; }
     });
 
-    V.Main = V.Base.extend({
+    V.List = V.Base.extend({
       t: _.template(t_main),
       t_entry: _.template(t_entry),
       model: new M.Entries(),
