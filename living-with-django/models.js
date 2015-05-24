@@ -1,11 +1,11 @@
-define(['backbone', 'marked.highlight'], function(B, marked) {
+define(['backbone'], function(B) {
   var M = {};
 
   M.Entry = B.Model.extend({
     fetchSrc: function(cbs) {
       var m = this;
-      return require(['text!' + m.get('src')], function(src) {
-        m.set('content', marked(src));
+      return require(['text!' + m.get('src'), m.get('parser')], function(src, parse) {
+        m.set('content', parse(src));
         _.finish(cbs);
       });
     }
