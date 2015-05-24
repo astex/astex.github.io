@@ -1,4 +1,4 @@
 <div class="entry">
-  <h1><%- model.get('title') %> <small><%- moment(model.get('created')).format('L LT') %></small></h1>
+  <h1><a href="#/<%- model.get('src') %>"><%- model.get('title') %> <small><%- moment(model.get('created')).format('L LT') %></small></a></h1>
   <%= model.get('content') %>
 </div>
