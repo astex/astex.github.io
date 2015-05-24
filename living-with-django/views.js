@@ -55,6 +55,29 @@ define(
       }
     });
 
+    V.Entry = V.Base.extend({
+      t: _.template(t_entry),
+
+      fetch: function(cbs) {
+        var v = this;
+        var collection = new M.Entries();
+
+        _.crunch({
+          pre: $.proxy(collection.fetch, collection),
+          post: {
+            pre: function(cbs1) {
+              v.model.set(collection.findWhere({src: v.model.get('src')}).attributes);
+              _.finish(cbs1);
+            },
+            post: $.proxy(v.model.fetchSrc, v.model)
+
+          }
+        })(cbs);
+      },
+
+      getTemplateArgs: function() { return {model: this.model, moment: moment}; }
+    });
+
     return V;
   }
 );
