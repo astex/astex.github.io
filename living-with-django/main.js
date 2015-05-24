@@ -1,5 +1,3 @@
-window.blog = {DEUBUG: true};
-
 require.config({
   paths: {
     text: 'lib/require-text',
@@ -28,6 +26,11 @@ require.config({
   }
 });
 
-require(['views', 'css!style/main.css'], function(V) {
-  new V.List({el: $('body')});
+require(['backbone', 'models', 'views', 'css!style/main.css'], function(B, M, V) {
+  new (B.Router.extend({
+    routes: {'': 'list'},
+    list: function() { new V.List({el: $('body')}); }
+  }));
+
+  B.history.start({root: '/living-with-django/'});
 });
