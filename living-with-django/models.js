@@ -1,4 +1,4 @@
-define(['backbone', 'marked'], function(B, marked) {
+define(['backbone', 'marked.highlight'], function(B, marked) {
   var M = {};
 
   M.Entry = B.Model.extend({

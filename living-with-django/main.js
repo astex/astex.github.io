@@ -8,13 +8,23 @@ require.config({
     jquery: 'lib/jquery',
 
     underscore: 'lib/underscore',
-    "underscore.crunch": "lib/underscore.crunch",
+    'underscore.crunch': 'lib/underscore.crunch',
 
     backbone: 'lib/backbone',
 
     marked: 'lib/marked',
+    'marked.highlight': 'lib/marked.highlight',
 
-    moment: 'lib/moment'
+    moment: 'lib/moment',
+
+    highlight: 'lib/highlight'
+  },
+
+  shim: {
+    highlight: {
+      deps: ['css!style/highlight.css'],
+      exports: 'hljs'
+    }
   }
 });
 
