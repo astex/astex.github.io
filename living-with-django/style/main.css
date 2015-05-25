@@ -21,6 +21,7 @@ small {
 pre {
     padding-left: 20px;
     border-left: solid #888 2px;
+    font-size: 1em;
 }
 
 p code {
