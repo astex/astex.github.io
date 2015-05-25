@@ -15,6 +15,7 @@
           config: function() {
             this.page.identifier = <%- model.get('id') %>;
             this.page.url = window.location.href;
+            this.page.title = <%- model.get('title') %>;
           }
         });
       });
