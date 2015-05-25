@@ -39,6 +39,8 @@ require(
       entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
     }));
 
+    // Disqus needs to be required once the "disqus_thread" element is on the page, so we need to
+    // reload the page whenever that element is added.  Easier to just always reload the page.
     $('body').on('click', 'a', function() {window.location.reload();});
 
     B.history.start({root: '/living-with-django/'});
