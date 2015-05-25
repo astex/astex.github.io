@@ -1,1 +1,1 @@
-<% model.each(function(entry) { %><%= t_entry({model: entry, moment: moment}) %><% }); %>
+<% model.each(function(entry) { %><%= t_entry({model: entry, moment: moment, comments: false}) %><% }); %>

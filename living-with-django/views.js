@@ -75,7 +75,9 @@ define(
         })(cbs);
       },
 
-      getTemplateArgs: function() { return {model: this.model, moment: moment}; }
+      getTemplateArgs: function() {
+        return {model: this.model, moment: moment, comments: true};
+      }
     });
 
     return V;

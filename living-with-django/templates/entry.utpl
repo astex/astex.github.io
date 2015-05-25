@@ -6,4 +6,8 @@
     </a>
   </h1>
   <%= model.get('content') %>
+  <% if (comments) { %>
+    <div id="disqus_thread"></div>
+    <script>require(['disqus.embed']);</script>
+  <% } %>
 </div>

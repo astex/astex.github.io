@@ -15,7 +15,10 @@ require.config({
 
     moment: 'lib/moment',
 
-    highlight: 'lib/highlight'
+    highlight: 'lib/highlight',
+
+    "disqus.embed": '//livingwithdjango.disqus.com/embed',
+    "disqus.count": '//livingwithdjango.disqus.com/count'
   },
 
   shim: {
@@ -26,12 +29,18 @@ require.config({
   }
 });
 
-require(['backbone', 'models', 'views', 'css!style/main.css'], function(B, M, V) {
-  new (B.Router.extend({
-    routes: {'': 'list', '*src': 'entry'},
-    list: function() { new V.List(); },
-    entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
-  }));
+require(
+  [
+    'backbone', 'models', 'views', 'css!style/main.css'
+  ], function(B, M, V) {
+    new (B.Router.extend({
+      routes: {'': 'list', '*src': 'entry'},
+      list: function() { new V.List(); },
+      entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
+    }));
 
-  B.history.start({root: '/living-with-django/'});
-});
+    $('body').on('click', 'a', function() {window.location.reload();});
+
+    B.history.start({root: '/living-with-django/'});
+  }
+);
