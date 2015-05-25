@@ -34,7 +34,7 @@ require(
     'backbone', 'models', 'views', 'css!style/main.css'
   ], function(B, M, V) {
     new (B.Router.extend({
-      routes: {'': 'list', '*src': 'entry'},
+      routes: {'': 'list', '!/': 'list', '!/*src': 'entry'},
       list: function() { new V.List(); },
       entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
     }));
