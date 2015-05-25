@@ -8,6 +8,16 @@
   <%= model.get('content') %>
   <% if (comments) { %>
     <div id="disqus_thread"></div>
-    <script>require(['disqus.embed']);</script>
+    <script>
+      require(['disqus.embed'], function() {
+        DISQUS.reset({
+          reload: true,
+          config: function() {
+            this.page.identifier = <%- model.get('id') %>;
+            this.page.url = window.location.href;
+          }
+        });
+      });
+    </script>
   <% } %>
 </div>
