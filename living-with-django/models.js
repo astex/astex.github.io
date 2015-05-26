@@ -8,15 +8,11 @@ define(['backbone'], function(B) {
         m.set('content', parse(src));
         _.finish(cbs);
       });
-    },
-
-    getSlug: function() {
-      return (this.get('id') + ' ' + this.get('title')).replace(/ /g, '+');
     }
   });
   M.Entries = B.Collection.extend({
     model: M.Entry,
-    url: '/entries/data.json'
+    url: 'entries/data.json'
   });
 
   return M;

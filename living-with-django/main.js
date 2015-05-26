@@ -34,11 +34,11 @@ require(
     'backbone', 'models', 'views', 'css!style/main.css'
   ], function(B, M, V) {
     new (B.Router.extend({
-      routes: {'': 'list', 'p/*slug': 'entry'},
+      routes: {'': 'list', '!/': 'list', '!/*src': 'entry'},
       list: function() { new V.List(); },
-      entry: function(slug) { new V.Entry({model: new M.Entry({slug: slug})}); }
+      entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
     }));
 
-    B.history.start({pushState: true});
+    B.history.start({root: '/living-with-django/'});
   }
 );
