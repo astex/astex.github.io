@@ -17,8 +17,8 @@ require.config({
 
     highlight: 'lib/highlight',
 
-    "disqus.embed": '//livingwithdjango.disqus.com/embed',
-    "disqus.count": '//livingwithdjango.disqus.com/count'
+    'disqus.embed': '//livingwithdjango.disqus.com/embed',
+    'disqus.count': '//livingwithdjango.disqus.com/count'
   },
 
   shim: {
