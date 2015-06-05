@@ -39,6 +39,6 @@ require(
       entry: function(src) { new V.Entry({model: new M.Entry({src: src})}); }
     }));
 
-    B.history.start({root: '/living-with-django/'});
+    B.history.start();
   }
 );
