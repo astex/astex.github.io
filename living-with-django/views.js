@@ -66,11 +66,10 @@ define(
           pre: $.proxy(collection.fetch, collection),
           post: {
             pre: function(cbs1) {
-              v.model.set(collection.findWhere({src: v.model.get('src')}).attributes);
+              v.model.set(collection.findWhere({slug: v.model.get('slug')}).attributes);
               _.finish(cbs1);
             },
             post: $.proxy(v.model.fetchSrc, v.model)
-
           }
         })(cbs);
       },
