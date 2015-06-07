@@ -2,7 +2,6 @@ require.config({
   paths: {
     text: 'lib/require-text',
     css: 'lib/require-css',
-    async: 'lib/require-async',
 
     jquery: 'lib/jquery',
 
