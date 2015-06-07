@@ -16,10 +16,7 @@ require.config({
 
     moment: 'lib/moment',
 
-    highlight: 'lib/highlight',
-
-    'disqus.embed': '//livingwithdjango.disqus.com/embed',
-    'disqus.count': '//livingwithdjango.disqus.com/count'
+    highlight: 'lib/highlight'
   },
 
   shim: {

@@ -75,7 +75,7 @@ define(
       },
 
       getTemplateArgs: function() {
-        return {model: this.model, moment: moment, comments: true};
+        return {model: this.model, moment: moment};
       }
     });
 
