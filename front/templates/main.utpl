@@ -1,3 +1,5 @@
-<div class="container">
-  <h1 class="big"><a href="/">Living With Django</a></h1>
-</div>
+<header>
+  <a href="/">Living With Django</a>
+</header>
+<section class="body">
+</section>

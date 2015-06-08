@@ -1,9 +1,11 @@
-<div class="entry">
-  <h1>
+<div class="entry <% if (!active) { %>un<% } %>expanded">
+  <% if (active) { %><h1><% } %>
     <a href="/e/<%- model.get('slug') %>">
       <%- model.get('title') %>
       <small><%- moment(model.get('created')).format('L LT') %></small>
     </a>
-  </h1>
-  <%= model.get('content') %>
+  <% if (active) { %></h1><% } %>
+  <% if (active) { %>
+    <%= model.get('content') %>
+  <% } %>
 </div>

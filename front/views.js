@@ -17,7 +17,7 @@ define(
       initialize: function() {
         var v = this;
         v.fetch({
-          success: function() { v.render(); }
+          success: function() { v.render().trigger('ready'); }
         });
       },
 
@@ -25,7 +25,7 @@ define(
 
       render: function() {
         this.$el.html(this.t_main());
-        this.$('.container').append(this.t(this.getTemplateArgs()));
+        this.$('.body').append(this.t(this.getTemplateArgs()));
         return this;
       },
 
@@ -37,6 +37,11 @@ define(
       t_entry: _.template(t_entry),
       model: new M.Entries(),
 
+      initialize: function(opts) {
+        this.active = opts.active;
+        return V.Base.prototype.initialize.apply(this, opts);
+      },
+
       fetch: function(cbs) {
         var v = this;
 
@@ -44,14 +49,23 @@ define(
           pre: $.proxy(v.model.fetch, v.model),
           post: function(cbs1) {
             _.crunch(v.model.map(function(entry) {
-              return $.proxy(entry.fetchSrc, entry);
+              if (entry.get('slug') == v.active.get('slug')) {
+                return $.proxy(entry.fetchSrc, entry);
+              } else {
+                return _.finish;
+              }
             }))(cbs1);
           }
         })(cbs);
       },
 
       getTemplateArgs: function() {
-        return {model: this.model, t_entry: this.t_entry, moment: moment};
+        return {
+          model: this.model,
+          active: this.active,
+          t_entry: this.t_entry,
+          moment: moment
+        };
       }
     });
 

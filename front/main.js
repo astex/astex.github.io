@@ -32,8 +32,15 @@ require(
   ], function(B, M, V) {
     new (B.Router.extend({
       routes: {'': 'list', 'e/:slug': 'entry'},
-      list: function() { new V.List(); },
-      entry: function(slug) { new V.Entry({model: new M.Entry({slug: slug})}); }
+      list: function() {
+        new V.List({active: new M.Entry({})});
+      },
+      entry: function(slug) {
+        (new V.List({active: new M.Entry({slug: slug})}))
+          .on('ready', function() {
+            $('.body').scrollTop($('.expanded').position().top - 45);
+          }); 
+      }
     }));
 
     B.history.start({pushState: true});
