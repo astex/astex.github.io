@@ -67,6 +67,9 @@ section.body > h1 {
   cursor: default;
 }
 
+.entry .title {
+  font-size: 1.1em;
+}
 .entry.expanded .title {
   cursor: pointer;
 }
