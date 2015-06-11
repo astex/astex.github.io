@@ -9,11 +9,14 @@ body {
 }
 
 a {
-  color: inherit;
+  color: #a70000;
   text-decoration: none;
 }
-a:hover, a:active, a:visited {
-  color: inherit
+a:active, a:visited {
+  color: #a70000;
+}
+a:hover {
+  color: #ff7070;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,6 +38,8 @@ header {
   padding-left: 15px;
   box-shadow: 0px 3px 3px #999;
 }
+header a { color: inherit; }
+header a:hover, header a:active, header a:visited { color: inherit; }
 
 section.body {
   height: calc(100vh - 3em - 15px);
