@@ -58,8 +58,6 @@ section.body > h1 {
   padding: 15px;
   background: white;
   box-shadow: 0px 0px 3px #999;
-}
-.entry {
   width: 90%;
   max-width: 1000px;
   transition: max-width 0.1s ease-in-out, margin 0.3s ease-in-out;
