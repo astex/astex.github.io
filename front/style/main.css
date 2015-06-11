@@ -37,10 +37,15 @@ header {
 }
 
 section.body {
-  padding-top: 30px;
-  height: calc(100vh - 3em - 45px);
+  height: calc(100vh - 3em - 15px);
   margin: auto;
   overflow-y: auto;
+}
+
+section.body > h1 {
+  margin: 30px auto;
+  width: 88%;
+  max-width: 950px;
 }
 
 .entry {

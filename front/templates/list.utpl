@@ -1,3 +1,23 @@
-<% model.each(function(entry) { %>
-  <%= t_entry({model: entry, moment: moment, active: entry.get('slug') == active.get('slug')}) %>
-<% }); %>
+<%
+  _.chain(model.models)
+    .groupBy(function(entry) { return moment(entry.get('created')).format('MM'); })
+    .map(function(v, i) { return [i, v]; })
+    .sortBy(function(date_entries) { return -1 * date_entries[0] })
+    .each(function(date_entries) {
+      var month = moment(date_entries[0], 'MM').format('MMMM');
+      %>
+      <h1><%- month %></h1>
+      <%
+      _.each(date_entries[1], function(entry) {
+        %>
+        <%=
+          t_entry({
+            model: entry,
+            moment: moment,
+            active: entry.get('slug') == active.get('slug')
+          })
+        %>
+        <%
+      });
+    });
+%>
