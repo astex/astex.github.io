@@ -1,12 +1,12 @@
 <%
   _.chain(model.models)
-    .groupBy(function(entry) { return moment(entry.get('created')).format('MM'); })
+    .groupBy(function(entry) { return moment(entry.get('created')).format('YYYYMM'); })
     .map(function(v, i) { return [i, v]; })
     .sortBy(function(date_entries) { return -1 * date_entries[0] })
     .each(function(date_entries) {
-      var month = moment(date_entries[0], 'MM').format('MMMM');
+      var month = moment(date_entries[0], 'YYYYMM');
       %>
-      <h1><%- month %></h1>
+      <h1><%- month.format('MMMM') %> <small><%- month.format('YYYY') %></small></h1>
       <%
       _.each(date_entries[1], function(entry) {
         %>
