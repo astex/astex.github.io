@@ -1,5 +1,13 @@
 [
     {
+        "id": 4,
+        "created": "2015-06-10T21:06:00-04:00",
+        "src": "/entries/2015-06-10-base-model.md",
+        "title": "BaseModel",
+        "parser": "marked.highlight",
+        "slug": "base-model"
+    },
+    {
         "id": 3,
         "created": "2015-05-25T16:45:00-04:00",
         "src": "/entries/2015-05-24-exceptions.md",
