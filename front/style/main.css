@@ -60,14 +60,20 @@ section.body > h1 {
   box-shadow: 0px 0px 3px #999;
   width: 90%;
   max-width: 1000px;
-  transition: max-width 0.1s ease-in-out, margin 0.3s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, max-width 0.1s ease-in-out, margin 0.3s ease-in-out;
   cursor: pointer;
+}
+.entry:hover {
+  box-shadow: 0px 0px 5px #666;
 }
 .entry.expanded {
   width: 95%;
   max-width: 1100px;
   margin: 15px auto;
   cursor: default;
+}
+.entry.expanded:hover {
+  box-shadow: 0px 0px 3px #999;
 }
 
 .entry .title {
