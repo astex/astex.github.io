@@ -49,11 +49,7 @@ define(
           pre: $.proxy(v.model.fetch, v.model),
           post: function(cbs1) {
             _.crunch(v.model.map(function(entry) {
-              if (entry.get('slug') == v.active.get('slug')) {
-                return $.proxy(entry.fetchSrc, entry);
-              } else {
-                return _.finish;
-              }
+              return $.proxy(entry.fetchSrc, entry);
             }))(cbs1);
           }
         })(cbs);
@@ -66,6 +62,23 @@ define(
           t_entry: this.t_entry,
           moment: moment
         };
+      },
+
+      events: {
+        'click .entry:not(.expanded)': 'expand',
+        'click .entry.expanded .title': 'unexpand'
+      },
+
+      expand: function(e) {
+        this.$('.expanded').removeClass('expanded');
+        var $el = $(e.currentTarget).addClass('expanded');
+        var model = this.model.findWhere({id: $el.data('id')});
+        window.history.pushState(model.get('slug'), '', '/e/' + model.get('slug'));
+      },
+
+      unexpand: function(e) {
+        this.$('.expanded').removeClass('expanded');
+        window.history.pushState('home', '', '/');
       }
     });
 
