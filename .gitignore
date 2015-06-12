@@ -1,3 +1,5 @@
 *.db
 scripts
 config
+__pycache__
+*.pyc
