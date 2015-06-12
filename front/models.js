@@ -1,5 +1,7 @@
-define(['backbone'], function(B) {
+define(['json!/config.json', 'backbone'], function(config, B) {
   var M = {};
+
+  M.Config = B.Model.extend({url: '/config.json'});
 
   M.Entry = B.Model.extend({
     fetchSrc: function(cbs) {
@@ -12,7 +14,9 @@ define(['backbone'], function(B) {
   });
   M.Entries = B.Collection.extend({
     model: M.Entry,
-    url: '/entries/data.json'
+    url: config.url + '/entry/',
+
+    parse: function(data) { return data.data; }
   });
 
   return M;
