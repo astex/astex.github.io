@@ -12,8 +12,17 @@ define(
 
     V.Main = Backbone.View.extend({
       el: $('body'),
-      t_main: _.template(t_main),
+      t: _.template(t_main),
 
+      initialize: function(opts) {
+        v = this;
+        v.$el.html(this.t());
+        (new opts.View(_.extend({}, opts, {el: v.$('.body')})))
+          .on('ready', function() { v.trigger('ready'); });
+      }
+    });
+
+    V.Base = Backbone.View.extend({
       initialize: function() {
         var v = this;
         v.fetch({
@@ -21,25 +30,24 @@ define(
         });
       },
 
-      fetch: function(cbs) { _.finish(cbs); },
+      fetch: function(cbs) { return _.finish(cbs); },
 
       render: function() {
-        this.$el.html(this.t_main());
-        this.$('.body').append(this.t(this.getTemplateArgs()));
+        this.$el.html(this.t(this.getTemplateArgs()));
         return this;
       },
 
       getTemplateArgs: function() { return {model: this.model}; }
     });
 
-    V.List = V.Main.extend({
+    V.List = V.Base.extend({
       t: _.template(t_list),
       t_entry: _.template(t_entry),
       model: new M.Entries(),
 
       initialize: function(opts) {
         this.active = opts.active;
-        return V.Main.prototype.initialize.apply(this, opts);
+        return V.Base.prototype.initialize.apply(this, opts);
       },
 
       fetch: function(cbs) {

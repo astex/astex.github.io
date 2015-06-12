@@ -34,10 +34,10 @@ require(
     new (B.Router.extend({
       routes: {'': 'list', 'e/:slug': 'entry'},
       list: function() {
-        new V.List({active: new M.Entry({})});
+        new V.Main({View: V.List, active: new M.Entry({})});
       },
       entry: function(slug) {
-        (new V.List({active: new M.Entry({slug: slug})}))
+        (new V.Main({View: V.List, active: new M.Entry({slug: slug})}))
           .on('ready', function() {
             $('.body').scrollTop($('.expanded').position().top - 45);
           }); 
