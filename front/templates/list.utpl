@@ -8,16 +8,19 @@
       %>
       <h1><%- month.format('MMMM') %> <small><%- month.format('YYYY') %></small></h1>
       <%
-      _.each(date_entries[1], function(entry) {
-        %>
-        <%=
-          t_entry({
-            model: entry,
-            moment: moment,
-            active: entry.get('slug') == active.get('slug')
-          })
-        %>
-        <%
-      });
+        _.chain(date_entries[1])
+          .sortBy(function(entry) { return moment(entry.get('created')).format() })
+          .reverse()
+          .each(function(entry) {
+            %>
+            <%=
+              t_entry({
+                model: entry,
+                moment: moment,
+                active: entry.get('slug') == active.get('slug')
+              })
+            %>
+            <%
+          });
     });
 %>
