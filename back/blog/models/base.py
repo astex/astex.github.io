@@ -20,8 +20,10 @@ class ModelMixin(object):
     def get_dictionary(self):
         d = {}
         for column in self.__table__.columns:
-            key = 'id_' if column.key == 'id' else column.key
-            d[key] = getattr(self, key)
+            if column.key == 'id':
+                d['id'] = getattr(self, 'id_')
+            else:
+                d[column.key] = getattr(self, column.key)
         return d
 
     def update(self, d):
