@@ -10,7 +10,7 @@ define(
   ], function($, _, B, moment, M, t_main, t_list, t_entry) {
     var V = {};
 
-    V.Base = Backbone.View.extend({
+    V.Main = Backbone.View.extend({
       el: $('body'),
       t_main: _.template(t_main),
 
@@ -32,7 +32,7 @@ define(
       getTemplateArgs: function() { return {model: this.model}; }
     });
 
-    V.List = V.Base.extend({
+    V.List = V.Main.extend({
       t: _.template(t_list),
       t_entry: _.template(t_entry),
       model: new M.Entries(),
@@ -82,7 +82,7 @@ define(
       }
     });
 
-    V.Entry = V.Base.extend({
+    V.Entry = V.Main.extend({
       t: _.template(t_entry),
 
       fetch: function(cbs) {
