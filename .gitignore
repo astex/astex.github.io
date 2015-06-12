@@ -3,3 +3,4 @@ scripts
 config
 __pycache__
 *.pyc
+config.json
