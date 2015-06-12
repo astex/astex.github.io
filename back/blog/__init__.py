@@ -24,4 +24,7 @@ def create_app(config):
     with app.app_context():
         db.create_all()
 
+    from blog.lib.session import SessionInterface
+    app.session_interface = SessionInterface()
+
     return app
