@@ -6,8 +6,8 @@ define(['json!/config.json', 'backbone'], function(config, B) {
   M.Entry = B.Model.extend({
     fetchSrc: function(cbs) {
       var m = this;
-      return require(['text!' + m.get('src'), m.get('parser')], function(src, parse) {
-        m.set('content', parse(src));
+      return require([m.get('parser')], function(parse) {
+        m.set('content', parse(m.get('src')));
         _.finish(cbs);
       });
     }
