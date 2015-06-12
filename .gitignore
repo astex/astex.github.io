@@ -1,6 +1,14 @@
+# Dev
 *.db
 scripts
-config
+
+# Python
 __pycache__
 *.pyc
+
+# Config
 config.json
+config
+
+# Deployment
+app.py
