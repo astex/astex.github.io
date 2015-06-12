@@ -2,23 +2,23 @@ define(
   [
     'jquery', 'underscore', 'backbone', 'moment',
     'models',
-    'text!templates/main.utpl',
+    'text!templates/header.utpl',
     'text!templates/list.utpl',
     'text!templates/entry.utpl',
 
     'underscore.crunch'
-  ], function($, _, B, moment, M, t_main, t_list, t_entry) {
+  ], function($, _, B, moment, M, t_header, t_list, t_entry) {
     var V = {};
 
     V.Main = Backbone.View.extend({
       el: $('body'),
-      t: _.template(t_main),
 
       initialize: function(opts) {
-        v = this;
-        v.$el.html(this.t());
-        (new opts.View(_.extend({}, opts, {el: v.$('.body')})))
-          .on('ready', function() { v.trigger('ready'); });
+        var v = this;
+        var ready = _.after(2, function() { v.trigger('ready'); });
+
+        v.$el.append((new V.Header()).on('ready', ready).el);
+        v.$el.append((new opts.View(_.extend(opts))).on('ready', ready).el);
       }
     });
 
@@ -37,10 +37,13 @@ define(
         return this;
       },
 
-      getTemplateArgs: function() { return {model: this.model}; }
+      getTemplateArgs: function() { return {}; }
     });
 
+    V.Header = V.Base.extend({el: '<header></header>', t: _.template(t_header)});
+
     V.List = V.Base.extend({
+      el: '<section class="body"></section>',
       t: _.template(t_list),
       t_entry: _.template(t_entry),
       model: new M.Entries(),
