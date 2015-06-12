@@ -39,7 +39,7 @@ define(
 
       initialize: function(opts) {
         this.active = opts.active;
-        return V.Base.prototype.initialize.apply(this, opts);
+        return V.Main.prototype.initialize.apply(this, opts);
       },
 
       fetch: function(cbs) {
