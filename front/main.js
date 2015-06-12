@@ -1,6 +1,7 @@
 require.config({
   paths: {
     text: 'lib/require-text',
+    json: 'lib/require-json',
     css: 'lib/require-css',
 
     jquery: 'lib/jquery',
